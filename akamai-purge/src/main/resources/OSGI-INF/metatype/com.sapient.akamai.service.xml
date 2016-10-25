@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MetaData xmlns="http://www.osgi.org/xmlns/metatype/v1.0.0"
+	 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 xsi:schemaLocation="
+		 http://www.osgi.org/xmlns/metadata/v1.0.0 http://www.osgi.org/xmlns/metatype/v1.1.0/metatype.xsd
+	 ">
+	 <!-- OCD : Object Class Definitions -->
+	 <!-- AD : Attribute Definitions-->
+	 <OCD description="Akamai Configuration" name="com.sapient.akamai.service" id="com.sapient.akamai.service">
+	 	<AD name="Akamai Host" id="akamai.purge.host" required="true" type="String" default="Akamai host" description="Akamai host"/>
+	 	<AD name="Akamai Client Token" id="akamai.purge.clienttoken" required="true" type="String" default="Client Token" description="Client Token"/>
+	 	<AD name="Akamai Access Token" id="akamai.purge.accesstoken" required="true" type="String" default="Access Token" description="Access Token"/>
+	 	<AD name="Akamai Client Secret" id="akamai.purge.clientsecret" required="true" type="String" default="Client Secret" description="Client Secret"/>
+	 </OCD>
+	 <Designate pid="com.sapient.akamai.service">
+	 	<Object ocdref="com.sapient.akamai.service"/>
+	 </Designate>
+</MetaData>
