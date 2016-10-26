@@ -3,6 +3,7 @@ package com.sapient.akamai.cache.model;
 import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
@@ -23,21 +24,36 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 	  "pingAfterSeconds": 60
 	}
  */
-@JsonIgnoreProperties({"submittedBy", "originalEstimatedSeconds", "pingAfterSeconds", "originalQueueLength", "completionTime", "supportId", "purgeStatus", "progressUri", "purgeId", "submissionTime", "httpStatus"})
+
 public class AkamaiStatusResponse
 {
 	private static final String ISO_DATE_TIME = "yyyy-MM-dd'T'HH:mm:ssX";
 	
+	@JsonIgnore(value=true)
 	private Integer originalEstimatedSeconds;
+	
+	@JsonIgnore(value=true)
 	private String progressUri;
+	
+	@JsonIgnore(value=true)
 	private Integer originalQueueLength;
+	
 	private String supportId;
-	private int httpStatus;
+	private Integer httpStatus;
+
+	@JsonIgnore(value=true)
 	private String purgeId;
+	
+	@JsonIgnore(value=true)
 	private String submittedBy;
+	
+	@JsonIgnore(value=true)
 	private String purgeStatus;
+	
+	@JsonIgnore(value=true)
 	private Integer pingAfterSeconds;
-	private int queueLength;
+	
+	private Integer queueLength;
 	private String detail;
 	
 	@JsonFormat(pattern = ISO_DATE_TIME)

@@ -91,6 +91,7 @@ public class AkamaiPurgeServiceImpl implements AkamaiPurgeService {
 			if(CollectionUtils.isNotEmpty(paths)) {
 				AkamaiPurgeRequest purgeRequest = new AkamaiPurgeRequest(paths);
 				akamaiResponse = makePostRequest(purgeRequest);
+				requestSuccess = true;
 			}
 		} else {
 			LOG.error("AKAMAI Queue Length is full.");
@@ -252,7 +253,7 @@ public class AkamaiPurgeServiceImpl implements AkamaiPurgeService {
 		AkamaiStatusResponse akamaiStatusResponse = makeGetRequest(GlobalConstants.AKAMAI_CHECK_QUEUE);
 		
 		if(akamaiStatusResponse != null){
-			if(akamaiStatusResponse.getHttpStatus().equals(HttpStatusCodes.STATUS_CODE_OK)){
+			if(akamaiStatusResponse.getHttpStatus() == HttpStatusCodes.STATUS_CODE_OK){
 				if(akamaiStatusResponse.getQueueLength() > 10000){
 					LOG.error("AKAMAI Queue Length is full. QueueLength: {}", akamaiStatusResponse.getQueueLength());
 					isQueueFull = true;
